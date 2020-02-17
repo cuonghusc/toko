@@ -4,7 +4,6 @@
 
     class ProductsController extends BaseController
     {
-
         function __construct()
         {
             $this->folder = 'products';
@@ -15,9 +14,11 @@
             $this->render('index',$data);
         }
         public function detail(){
-            $products = Products::find($_GET['id']);
-            $data = array('products' => $products);
-            $this->render('detail',$data);
+            if (isset($_GET['id'])) {
+                $products = Products::find($_GET['id']);
+                $data = array('products' => $products);
+                $this->render('detail',$data);
+            }else $this->render('error');
         }
     }
 ?>
