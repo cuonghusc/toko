@@ -14,5 +14,10 @@
             $data = array('products'=>$products);
             $this->render('index',$data);
         }
+        public function detail(){
+            $products = Products::find($_GET['id']);
+            $data = array('products' => $products);
+            $this->render('detail',$data);
+        }
     }
 ?>

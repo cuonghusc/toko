@@ -1,6 +1,6 @@
 <?php
     require_once('controllers/base_controller.php');
-
+    require_once('models/products.php');
     class PagesController extends BaseController
     {
         function __construct()
@@ -10,10 +10,8 @@
 
         public function home()
         {
-            $data = array(
-                'name' => 'Cường',
-                'age' => 22
-            );
+            $products = Products::all();
+            $data = array('products'=>$products);
             $this->render('home', $data);
         }
 
